@@ -1,17 +1,6 @@
 // app/ts/views/NegociacoesView.ts
 
-class NegociacoesView {
-
-    private _elemento: Element;
-
-    constructor(selector: string) {
-        this._elemento = document.querySelector(selector);
-    }
-
-    update(model: Negociacoes): void {
-        this._elemento.innerHTML = this.template(model);
-    }
-
+class NegociacoesView extends View<Negociacoes> {
 
     template(model: Negociacoes): string {
 
@@ -28,10 +17,10 @@ class NegociacoesView {
 
             <tbody>
             
-                ${model.negociacoes.map(negociacao => 
-                `
+                ${model.negociacoes.map(negociacao =>
+            `
                     <tr>
-                        <td>${negociacao.data.getDate()}/${negociacao.data.getMonth()+1}/${negociacao.data.getFullYear()}</td>
+                        <td>${negociacao.data.getDate()}/${negociacao.data.getMonth() + 1}/${negociacao.data.getFullYear()}</td>
                         <td>${negociacao.quantidade}</td>
                         <td>${negociacao.valor}</td>
                         <td>${negociacao.volume}</td>
