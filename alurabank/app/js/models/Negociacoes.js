@@ -2,13 +2,6 @@ class Negociacoes {
     constructor() {
         this._negociacoes = [];
     }
-    /**
-     *
-     * Adiciona uma Negociação na lista
-     *
-     * @param negociacao
-     *
-     */
     adiciona(negociacao) {
         this._negociacoes.push(negociacao);
     }

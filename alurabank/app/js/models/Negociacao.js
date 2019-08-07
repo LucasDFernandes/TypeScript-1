@@ -1,12 +1,4 @@
 class Negociacao {
-    /**
-    *
-    * Construtor
-    *
-    * @param {*} data
-    * @param {*} quantidade
-    * @param {*} valor
-    */
     constructor(_data, _quantidade, _valor) {
         this._data = _data;
         this._quantidade = _quantidade;
@@ -21,11 +13,6 @@ class Negociacao {
     get valor() {
         return this._valor;
     }
-    /**
-     *
-     * Volume = Quantidade * Valor
-     *
-     */
     get volume() {
         return this._valor * this._quantidade;
     }

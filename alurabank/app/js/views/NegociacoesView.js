@@ -1,4 +1,3 @@
-// app/ts/views/NegociacoesView.ts
 class NegociacoesView extends View {
     template(model) {
         return `
