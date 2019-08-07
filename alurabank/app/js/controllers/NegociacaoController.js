@@ -1,7 +1,7 @@
-System.register(["../views/NegociacoesView", "../views/MensagemView", "../models/Negociacoes", "../models/Negociacao"], function (exports_1, context_1) {
+System.register(["../views/NegociacoesView", "../views/MensagemView", "../models/Negociacoes", "../models/Negociacao", "../models/enums/DiaDaSemana"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var NegociacoesView_1, MensagemView_1, Negociacoes_1, Negociacao_1, NegociacaoController;
+    var NegociacoesView_1, MensagemView_1, Negociacoes_1, Negociacao_1, DiaDaSemana_1, NegociacaoController;
     return {
         setters: [
             function (NegociacoesView_1_1) {
@@ -15,6 +15,9 @@ System.register(["../views/NegociacoesView", "../views/MensagemView", "../models
             },
             function (Negociacao_1_1) {
                 Negociacao_1 = Negociacao_1_1;
+            },
+            function (DiaDaSemana_1_1) {
+                DiaDaSemana_1 = DiaDaSemana_1_1;
             }
         ],
         execute: function () {
@@ -30,10 +33,18 @@ System.register(["../views/NegociacoesView", "../views/MensagemView", "../models
                 }
                 adiciona(event) {
                     event.preventDefault();
+                    let data = new Date(this._inputData.val().replace(/-/g, ','));
+                    if (!this._ehDiaUtil(data)) {
+                        this._mensagemView.update('Somente negociações em dias úteis, por favor!');
+                        return;
+                    }
                     const negociacao = new Negociacao_1.Negociacao(new Date(this._inputData.val().replace(/-/g, ',')), parseInt(this._inputQuantidade.val()), parseFloat(this._inputValor.val()));
                     this._negociacoes.adiciona(negociacao);
                     this._negociacoesView.update(this._negociacoes);
                     this._mensagemView.update('Negociação adicionada com sucesso!');
+                }
+                _ehDiaUtil(data) {
+                    return data.getDay() != DiaDaSemana_1.DiaDaSemana.Sabado && data.getDay() != DiaDaSemana_1.DiaDaSemana.Domingo;
                 }
             };
             exports_1("NegociacaoController", NegociacaoController);
