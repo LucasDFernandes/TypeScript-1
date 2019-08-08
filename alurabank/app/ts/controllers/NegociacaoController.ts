@@ -36,7 +36,7 @@ export class NegociacaoController {
 
         if (!this._ehDiaUtil(data)) {
 
-            this._mensagemView.update('Somente negociações em dias úteis, por favor!');
+            this._mensagemView.update('Somente negociações em dias úteis, por favor!', 'danger');
             return
         }
 
@@ -48,7 +48,7 @@ export class NegociacaoController {
 
         this._negociacoes.adiciona(negociacao);
         this._negociacoesView.update(this._negociacoes);
-        this._mensagemView.update('Negociação adicionada com sucesso!');
+        this._mensagemView.update('Negociação adicionada com sucesso!', 'info');
     }
 
     private _ehDiaUtil(data: Date) {

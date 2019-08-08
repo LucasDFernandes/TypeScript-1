@@ -35,13 +35,13 @@ System.register(["../views/NegociacoesView", "../views/MensagemView", "../models
                     event.preventDefault();
                     let data = new Date(this._inputData.val().replace(/-/g, ','));
                     if (!this._ehDiaUtil(data)) {
-                        this._mensagemView.update('Somente negociações em dias úteis, por favor!');
+                        this._mensagemView.update('Somente negociações em dias úteis, por favor!', 'danger');
                         return;
                     }
                     const negociacao = new Negociacao_1.Negociacao(new Date(this._inputData.val().replace(/-/g, ',')), parseInt(this._inputQuantidade.val()), parseFloat(this._inputValor.val()));
                     this._negociacoes.adiciona(negociacao);
                     this._negociacoesView.update(this._negociacoes);
-                    this._mensagemView.update('Negociação adicionada com sucesso!');
+                    this._mensagemView.update('Negociação adicionada com sucesso!', 'info');
                 }
                 _ehDiaUtil(data) {
                     return data.getDay() != DiaDaSemana_1.DiaDaSemana.Sabado && data.getDay() != DiaDaSemana_1.DiaDaSemana.Domingo;
